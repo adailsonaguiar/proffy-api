@@ -74,7 +74,7 @@ export default class ClassesController {
         this.select('class_schedule.*')
           .from('class_schedule')
           .whereRaw('`class_schedule`.`class_id` = `classes`.`id`')
-          .where('`class_schedule`.`week_day` = ??', [Number(week_day)]);
+          .whereRaw('`class_schedule`.`week_day` = ??', [Number(week_day)]);
       })
       .where('classes.subject', '=', subject)
       .join('users', 'classes.user_id', '=', 'users.id')
